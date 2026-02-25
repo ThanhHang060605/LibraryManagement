@@ -21,7 +21,8 @@
             <Button x:Name="btnManageBooks"
                     Content="Manage Books"
                     Height="40"
-                    Margin="0,0,0,10"/>
+                    Margin="0,0,0,10"
+                    Click="btnManageBooks_Click"/>
 
             <Button x:Name="btnManageReaders"
                     Content="Manage Readers"

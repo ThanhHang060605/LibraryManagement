@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using LibraryManagement.UI;
 namespace LibraryManagement.UI
 {
     public partial class MainWindow : Window
@@ -35,6 +35,13 @@ namespace LibraryManagement.UI
                 btnManageBooks.Visibility = Visibility.Collapsed;
                 btnDashboard.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void btnManageBooks_Click(object sender, RoutedEventArgs e)
+        {
+            BookView bookView = new BookView();
+            bookView.Show();
+            this.Hide();
         }
     }
 }
