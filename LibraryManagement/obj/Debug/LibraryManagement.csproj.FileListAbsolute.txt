@@ -1,0 +1,17 @@
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\bin\Debug\LibraryManagement.exe.config
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\bin\Debug\LibraryManagement.exe
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\bin\Debug\LibraryManagement.pdb
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\LibraryManagement.csproj.AssemblyReference.cache
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\UI\LoginWindow.g.cs
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\UI\MainWindow.g.cs
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\App.g.cs
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\LibraryManagement_MarkupCompile.cache
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\LibraryManagement_MarkupCompile.lref
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\UI\LoginWindow.baml
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\UI\MainWindow.baml
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\LibraryManagement.g.resources
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\LibraryManagement.Properties.Resources.resources
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\LibraryManagement.csproj.GenerateResource.cache
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\LibraryManagement.csproj.CoreCompileInputs.cache
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\LibraryManagement.exe
+D:\.NET\Group_Project\LibraryManagement\LibraryManagement\obj\Debug\LibraryManagement.pdb
