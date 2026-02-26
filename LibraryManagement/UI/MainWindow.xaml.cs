@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+// CHỖ NÀY QUAN TRỌNG: Đảm bảo có dòng này để chương trình hiểu DashboardAdminView là gì
+using LibraryManagement.UI;
 
 namespace LibraryManagement.UI
 {
@@ -33,8 +23,19 @@ namespace LibraryManagement.UI
             if (role == "User")
             {
                 btnManageBooks.Visibility = Visibility.Collapsed;
+                btnManageReaders.Visibility = Visibility.Collapsed; // Ẩn luôn quản lý độc giả nếu là User
                 btnDashboard.Visibility = Visibility.Collapsed;
             }
+        }
+
+        // Đây là hàm xử lý sự kiện Click đã khai báo trong XAML
+        private void btnDashboard_Click(object sender, RoutedEventArgs e)
+        {
+            // Nếu dòng dưới vẫn đỏ, hãy nhấn Ctrl + Shift + B để Build lại Project
+            DashboardAdminView dashboard = new DashboardAdminView();
+
+            // MainContent phải khớp với x:Name trong XAML bạn vừa gửi
+            MainContent.Content = dashboard;
         }
     }
 }
