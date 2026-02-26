@@ -5,28 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManagement.UI"
         mc:Ignorable="d"
-        Title="Login" Height="350" Width="400"
-        WindowStartupLocation="CenterScreen">
+        Title="Hệ Thống Quản Lý Thư Viện - Login" Height="450" Width="400"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
 
-    <Grid>
-        <StackPanel VerticalAlignment="Center" Margin="40">
+    <Border CornerRadius="20" Background="White">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20" Color="#FFD1D1D1" RenderingBias="Quality" ShadowDepth="1"/>
+        </Border.Effect>
 
-            <TextBlock Text="LOGIN SYSTEM"
-                       FontSize="22"
-                       FontWeight="Bold"
-                       HorizontalAlignment="Center"
-                       Margin="0,0,0,20"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="130"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <TextBlock Text="Username"/>
-            <TextBox x:Name="txtUsername" Height="30" Margin="0,5,0,10"/>
+            <Border Grid.Row="0" CornerRadius="20,20,0,0">
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF4E73DF" Offset="0"/>
+                        <GradientStop Color="#FF224ABE" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Text="📖" FontSize="40" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                    <TextBlock Text="LIBRARY MANAGEMENT" FontWeight="Bold" Foreground="White" FontSize="18" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Hệ thống quản lý thông tin thư viện" Foreground="#B3FFFFFF" FontSize="11" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Border>
 
-            <TextBlock Text="Password"/>
-            <PasswordBox x:Name="txtPassword" Height="30" Margin="0,5,0,20"/>
+            <StackPanel Grid.Row="1" Margin="40,20,40,20">
+                <TextBlock Text="ĐĂNG NHẬP" FontSize="20" FontWeight="Bold" Foreground="#333" HorizontalAlignment="Center" Margin="0,0,0,20"/>
 
-            <Button Content="Login"
-                    Height="35"
-                    Click="btnLogin_Click"/>
+                <TextBlock Text="Tên đăng nhập" Foreground="#666" Margin="0,0,0,5" FontSize="12"/>
+                <Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="5" Margin="0,0,0,15">
+                    <TextBox x:Name="txtUsername" Height="35" Background="Transparent" BorderThickness="0" VerticalContentAlignment="Center" Padding="10,0"/>
+                </Border>
 
-        </StackPanel>
-    </Grid>
+                <TextBlock Text="Mật khẩu" Foreground="#666" Margin="0,0,0,5" FontSize="12"/>
+                <Border BorderBrush="#DDD" BorderThickness="1" CornerRadius="5" Margin="0,0,0,25">
+                    <PasswordBox x:Name="txtPassword" Height="35" Background="Transparent" BorderThickness="0" VerticalContentAlignment="Center" Padding="10,0"/>
+                </Border>
+
+                <Button Content="ĐĂNG NHẬP HỆ THỐNG" 
+                        Height="40" 
+                        Click="btnLogin_Click"
+                        Cursor="Hand">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF4E73DF"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="20">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FF224ABE"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>

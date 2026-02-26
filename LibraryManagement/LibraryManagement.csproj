@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="UI\DashboardAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,10 +75,15 @@
     <Compile Include="DAL\BorrowDAL.cs" />
     <Compile Include="DAL\DatabaseHelper.cs" />
     <Compile Include="DAL\ReaderDAL.cs" />
+    <Compile Include="BUS\ThongKeBUS.cs" />
+    <Compile Include="DAL\ThongKeDAL.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BorrowRecord.cs" />
     <Compile Include="Models\Reader.cs" />
+    <Compile Include="UI\DashboardAdminView.xaml.cs">
+      <DependentUpon>DashboardAdminView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -115,5 +124,6 @@
   <ItemGroup>
     <Content Include="Databases\LibraryDB.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
