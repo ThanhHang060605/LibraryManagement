@@ -67,7 +67,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DAL\BookDAL.cs" />
+    <Compile Include="DAL\BorrowDAL.cs" />
+    <Compile Include="DAL\DatabaseHelper.cs" />
+    <Compile Include="DAL\ReaderDAL.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\BorrowRecord.cs" />
+    <Compile Include="Models\Reader.cs" />
     <Compile Include="UI\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -104,7 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BUS\" />
-    <Folder Include="DAL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Databases\LibraryDB.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

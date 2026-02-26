@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LibraryManagement.DAL;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace LibraryManagement.UI
 {
@@ -24,6 +13,8 @@ namespace LibraryManagement.UI
             InitializeComponent();
             this.role = role;
             SetupRole();
+
+            TestDatabase(); 
         }
 
         private void SetupRole()
@@ -34,6 +25,39 @@ namespace LibraryManagement.UI
             {
                 btnManageBooks.Visibility = Visibility.Collapsed;
                 btnDashboard.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void TestDatabase()
+        {
+            try
+            {
+                BookDAL dal = new BookDAL();
+
+                // INSERT
+                dal.Insert(new Models.Book
+                {
+                    Title = "Test Book",
+                    Author = "Admin",
+                    Category = "Test",
+                    Quantity = 5,
+                    AvailableQuantity = 5
+                });
+
+                // SELECT
+                var books = dal.GetAll();
+
+                string result = "";
+                foreach (var b in books)
+                {
+                    result += b.BookId + " - " + b.Title + "\n";
+                }
+
+                MessageBox.Show(result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
     }
