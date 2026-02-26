@@ -71,9 +71,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DAL\BookDAL.cs" />
+    <Compile Include="DAL\BorrowDAL.cs" />
+    <Compile Include="DAL\DatabaseHelper.cs" />
+    <Compile Include="DAL\ReaderDAL.cs" />
     <Compile Include="BUS\ThongKeBUS.cs" />
     <Compile Include="DAL\ThongKeDAL.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\BorrowRecord.cs" />
+    <Compile Include="Models\Reader.cs" />
     <Compile Include="UI\DashboardAdminView.xaml.cs">
       <DependentUpon>DashboardAdminView.xaml</DependentUpon>
     </Compile>
@@ -110,6 +117,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BUS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Databases\LibraryDB.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
