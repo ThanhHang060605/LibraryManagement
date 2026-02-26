@@ -5,30 +5,89 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LibraryManagement"
         mc:Ignorable="d"
-        Title="Library Management"
-        Height="400"
-        Width="600"
+        Title="Quản Lý Thư Viện - Trang Chủ" 
+        Height="650" Width="1000"
         WindowStartupLocation="CenterScreen">
 
-    <Grid>
+    <Window.Resources>
+        <Style x:Key="MenuButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#D1D3E2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="20,0,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="0">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3A5199"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#F8F9FC">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="220"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Margin="20">
-            <TextBlock x:Name="txtRole" FontSize="18" FontWeight="Bold" Margin="0,0,0,20"/>
+        <Border Grid.Column="0">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF4E73DF" Offset="0"/>
+                    <GradientStop Color="#FF224ABE" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
 
-            <Button x:Name="btnManageBooks" Content="Manage Books" Height="40" Margin="0,0,0,10"/>
+            <StackPanel>
+                <StackPanel Margin="0,30,0,30">
+                    <TextBlock Text="📖" FontSize="35" HorizontalAlignment="Center" Foreground="White"/>
+                    <TextBlock Text="LIB MANAGEMENT" FontWeight="Bold" Foreground="White" FontSize="16" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                    <Separator Background="#40FFFFFF" Margin="20,15,20,15"/>
+                </StackPanel>
 
-            <Button x:Name="btnManageReaders" Content="Manage Readers" Height="40" Margin="0,0,0,10"/>
+                <TextBlock x:Name="txtRole" Text="ADMIN" Foreground="#B3FFFFFF" FontSize="11" FontWeight="Bold" Margin="20,0,0,10"/>
 
-            <Button x:Name="btnDashboard" 
-                Content="Dashboard" 
-                Height="40" 
-                Click="btnDashboard_Click"/>
-        </StackPanel>
+                <Button x:Name="btnManageBooks" Content="📚   Quản lý Sách" Style="{StaticResource MenuButtonStyle}"/>
+                <Button x:Name="btnManageReaders" Content="👥   Quản lý Độc giả" Style="{StaticResource MenuButtonStyle}"/>
+                <Button x:Name="btnDashboard" Content="📊   Dashboard Thống kê" Style="{StaticResource MenuButtonStyle}" Click="btnDashboard_Click"/>
 
-        <ContentControl x:Name="MainContent" Grid.Column="1" Margin="10"/>
+                <Separator Background="#40FFFFFF" Margin="20,15,20,15"/>
+
+                <Button Content="🚪   Đăng xuất" Style="{StaticResource MenuButtonStyle}" Click="btnLogout_Click"/>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" Background="White">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="#EEEEEE" ShadowDepth="2"/>
+                </Border.Effect>
+                <TextBlock Text="Hệ thống Quản lý Thư Viện" VerticalAlignment="Center" Margin="25,0,0,0" Foreground="#5A5C69" FontSize="16" FontWeight="SemiBold"/>
+            </Border>
+
+            <Border Grid.Row="1" Margin="20" Background="White" CornerRadius="10">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" Color="#F0F0F0" ShadowDepth="1"/>
+                </Border.Effect>
+                <ContentControl x:Name="MainContent" Margin="15"/>
+            </Border>
+        </Grid>
     </Grid>
 </Window>

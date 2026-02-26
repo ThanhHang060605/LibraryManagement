@@ -59,7 +59,6 @@ namespace LibraryManagement.DAL
             using (SqlConnection conn = new SqlConnection(strCon))
             {
                 conn.Open();
-                // TrangThai = N'Chưa trả' (Sửa lại tùy theo DB của bạn lưu là số hay chữ)
                 string sql = "SELECT MaSach, TenSach, TenDocGia, NgayHenTra FROM MuonTra WHERE NgayHenTra < GETDATE() AND TrangThai = N'Chưa trả'";
                 SqlDataAdapter da = new SqlDataAdapter(sql, conn);
                 DataTable dt = new DataTable();

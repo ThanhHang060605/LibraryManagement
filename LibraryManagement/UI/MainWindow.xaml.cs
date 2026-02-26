@@ -72,5 +72,16 @@ namespace LibraryManagement.UI
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
+        //Nút đăng xuất
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                LoginWindow login = new LoginWindow();
+                login.Show();
+                this.Close();
+            }
+        }
     }
 }
