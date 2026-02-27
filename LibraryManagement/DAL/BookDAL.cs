@@ -12,7 +12,9 @@ namespace LibraryManagement.DAL
     class BookDAL
     {
         string connectionString =
-    @"Server=(localdb)\MSSQLLocalDB;Database=QuanLyThuVien;Trusted_Connection=True;";
+@"Server=DESKTOP-J6FHSRU\SQLEXPRESS;
+Database=LibraryDB;
+Trusted_Connection=True;";
         public List<Book> GetAll()
         {
             List<Book> list = new List<Book>();
@@ -28,7 +30,7 @@ namespace LibraryManagement.DAL
                 {
                     list.Add(new Book
                     {
-                        Id = (int)reader["Id"],
+                        Id = (int)reader["BookId"],
                         Title = reader["Title"].ToString(),
                         Author = reader["Author"].ToString(),
                         Quantity = (int)reader["Quantity"],
@@ -69,7 +71,7 @@ namespace LibraryManagement.DAL
                         Author=@Author,
                         Quantity=@Quantity,
                         AvailableQuantity=@AvailableQuantity
-                        WHERE Id=@Id";
+                        WHERE BookId=@Id";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -88,7 +90,7 @@ namespace LibraryManagement.DAL
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "DELETE FROM Books WHERE Id=@Id";
+                string query = "DELETE FROM Books WHERE BookId=@Id";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Id", id);
 
