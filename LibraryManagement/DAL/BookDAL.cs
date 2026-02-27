@@ -94,5 +94,37 @@ namespace LibraryManagement.DAL
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public List<Book> Search(string keyword)
+        {
+            List<Book> list = new List<Book>();
+
+            using (SqlConnection conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                string query = @"SELECT * FROM Books 
+                         WHERE Title LIKE @key OR Author LIKE @key";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@key", "%" + keyword + "%");
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    list.Add(new Book
+                    {
+                        BookId = (int)reader["BookId"],
+                        Title = reader["Title"].ToString(),
+                        Author = reader["Author"].ToString(),
+                        Category = reader["Category"].ToString(),
+                        Quantity = (int)reader["Quantity"],
+                        AvailableQuantity = (int)reader["AvailableQuantity"]
+                    });
+                }
+            }
+
+            return list;
+        }
     }
 }
