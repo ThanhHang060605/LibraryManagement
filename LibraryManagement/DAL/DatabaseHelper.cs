@@ -10,7 +10,7 @@ namespace LibraryManagement.DAL
     internal class DatabaseHelper
     {
         private static string connectionString =
-           "Server=.;Database=LibraryDB;Trusted_Connection=True;";
+    "Server=(localdb)\\MSSQLLocalDB;Database=LibraryDB;Trusted_Connection=True;";
 
         public static SqlConnection GetConnection()
         {
