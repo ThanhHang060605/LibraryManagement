@@ -59,7 +59,7 @@
 
                 <TextBlock x:Name="txtRole" Text="ADMIN" Foreground="#B3FFFFFF" FontSize="11" FontWeight="Bold" Margin="20,0,0,10"/>
 
-                <Button x:Name="btnManageBooks" Content="📚   Quản lý Sách" Style="{StaticResource MenuButtonStyle}"/>
+                <Button x:Name="btnManageBooks" Content="📚   Quản lý Sách" Style="{StaticResource MenuButtonStyle}" Click="btnManageBooks_Click"/>
                 <Button x:Name="btnManageReaders" Content="👥   Quản lý Độc giả" Style="{StaticResource MenuButtonStyle}"/>
                 <Button x:Name="btnDashboard" Content="📊   Dashboard Thống kê" Style="{StaticResource MenuButtonStyle}" Click="btnDashboard_Click"/>
 
