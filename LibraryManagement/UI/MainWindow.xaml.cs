@@ -15,6 +15,8 @@ namespace LibraryManagement.UI
             this.role = role;
             SetupRole();
 
+            MainContent.Content = new BookView(role);
+
             TestDatabase(); 
         }
 
@@ -24,7 +26,7 @@ namespace LibraryManagement.UI
 
             if (role == "User")
             {
-                btnManageBooks.Visibility = Visibility.Collapsed;
+                //btnManageBooks.Visibility = Visibility.Collapsed;
                 btnManageReaders.Visibility = Visibility.Collapsed; // Ẩn luôn quản lý độc giả nếu là User
                 btnDashboard.Visibility = Visibility.Collapsed;
             }
@@ -42,9 +44,8 @@ namespace LibraryManagement.UI
 
         private void btnManageBooks_Click(object sender, RoutedEventArgs e)
         {
-            BookView bookWindow = new BookView();
-            bookWindow.Show();
-            this.Close();   // hoặc this.Hide();
+            BookView bookView = new BookView(role);
+            //MainContent.Content = bookView;   // hoặc this.Hide();
         }
 
         private void TestDatabase()
