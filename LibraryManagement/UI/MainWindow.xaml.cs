@@ -40,6 +40,13 @@ namespace LibraryManagement.UI
             MainContent.Content = dashboard;
         }
 
+        private void btnManageBooks_Click(object sender, RoutedEventArgs e)
+        {
+            BookView bookWindow = new BookView();
+            bookWindow.Show();
+            this.Close();   // hoặc this.Hide();
+        }
+
         private void TestDatabase()
         {
             try

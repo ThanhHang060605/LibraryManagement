@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="UI\BookView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\DashboardAdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +75,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BUS\BookBUS.cs" />
     <Compile Include="DAL\BookDAL.cs" />
     <Compile Include="DAL\BorrowDAL.cs" />
     <Compile Include="DAL\DatabaseHelper.cs" />
@@ -81,6 +86,9 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BorrowRecord.cs" />
     <Compile Include="Models\Reader.cs" />
+    <Compile Include="UI\BookView.xaml.cs">
+      <DependentUpon>BookView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\DashboardAdminView.xaml.cs">
       <DependentUpon>DashboardAdminView.xaml</DependentUpon>
     </Compile>
@@ -118,9 +126,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BUS\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Databases\LibraryDB.sql" />
   </ItemGroup>
