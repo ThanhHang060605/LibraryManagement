@@ -60,6 +60,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\BorrowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\DashboardAdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,6 +93,9 @@
     <Compile Include="Models\Reader.cs" />
     <Compile Include="UI\BookView.xaml.cs">
       <DependentUpon>BookView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BorrowView.xaml.cs">
+      <DependentUpon>BorrowView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\DashboardAdminView.xaml.cs">
       <DependentUpon>DashboardAdminView.xaml</DependentUpon>

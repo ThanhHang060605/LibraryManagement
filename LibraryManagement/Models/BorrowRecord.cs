@@ -15,5 +15,8 @@ namespace LibraryManagement.Models
         public DateTime DueDate { get; set; }
         public DateTime? ReturnDate { get; set; }
         public string Status { get; set; }
+        public int LateDays { get; set; }
+        public string ReaderName { get; set; }
+        public string BookTitle { get; set; }
     }
 }
