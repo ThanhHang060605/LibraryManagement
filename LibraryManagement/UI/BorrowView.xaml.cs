@@ -17,6 +17,11 @@ namespace LibraryManagement.UI
         public BorrowView()
         {
             InitializeComponent();
+            Loaded += BorrowView_Loaded;
+        }
+
+        private void BorrowView_Loaded(object sender, RoutedEventArgs e)
+        {
             LoadData();
         }
 
@@ -137,15 +142,26 @@ namespace LibraryManagement.UI
         // ================== SEARCH ==================
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (txtSearch.Foreground == Brushes.Gray)
+            // Nếu control chưa load xong thì bỏ qua
+            if (!this.IsLoaded)
                 return;
+
+            if (dgBorrow == null)
+                return;
+
+            if (string.IsNullOrWhiteSpace(txtSearch.Text) ||
+                txtSearch.Text == "Tìm theo tên người đọc hoặc sách...")
+            {
+                dgBorrow.ItemsSource = borrowDAL.GetAllBorrow();
+                return;
+            }
 
             string keyword = txtSearch.Text.ToLower();
 
             dgBorrow.ItemsSource = borrowDAL.GetAllBorrow()
                 .Where(x =>
-                    x.ReaderName.ToLower().Contains(keyword) ||
-                    x.BookTitle.ToLower().Contains(keyword))
+                    (x.ReaderName != null && x.ReaderName.ToLower().Contains(keyword)) ||
+                    (x.BookTitle != null && x.BookTitle.ToLower().Contains(keyword)))
                 .ToList();
         }
     }

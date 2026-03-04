@@ -17,7 +17,7 @@ namespace LibraryManagement.UI
 
             MainContent.Content = new BookView(role);
 
-            TestDatabase(); 
+            TestDatabase();
         }
 
         private void SetupRole()
@@ -44,9 +44,14 @@ namespace LibraryManagement.UI
 
         private void btnManageBooks_Click(object sender, RoutedEventArgs e)
         {
-            BookView bookView = new BookView(role);
-            //MainContent.Content = bookView;   // hoặc this.Hide();
+            MainContent.Content = new BookView(role);
         }
+
+        //private void btnManageBooks_Click(object sender, RoutedEventArgs e)
+        //{
+        //  BookView bookView = new BookView(role);
+        //MainContent.Content = bookView;   // hoặc this.Hide();
+        //}
 
         private void TestDatabase()
         {
@@ -90,6 +95,16 @@ namespace LibraryManagement.UI
                 login.Show();
                 this.Close();
             }
+        }
+
+        private void btnManageReaders_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new ReaderView();
+        }
+
+        private void btnManageBorrow_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new BorrowView();
         }
     }
 }
