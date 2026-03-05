@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagement.Models
 {
-    internal class BorrowRecord
+    public class BorrowRecord
     {
         public int BorrowId { get; set; }
         public int ReaderId { get; set; }
