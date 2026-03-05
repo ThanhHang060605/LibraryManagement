@@ -8,16 +8,20 @@ namespace LibraryManagement.UI
     public partial class MainWindow : Window
     {
         private string role;
+        private int currentReaderId;
 
-        public MainWindow(string role)
+
+        public MainWindow(string role, int readerId)
         {
             InitializeComponent();
             this.role = role;
+            this.currentReaderId = readerId;
+
             SetupRole();
 
             MainContent.Content = new BookView(role);
 
-            TestDatabase(); 
+            // TestDatabase();
         }
 
         private void SetupRole()
@@ -44,9 +48,14 @@ namespace LibraryManagement.UI
 
         private void btnManageBooks_Click(object sender, RoutedEventArgs e)
         {
-            BookView bookView = new BookView(role);
-            //MainContent.Content = bookView;   // hoặc this.Hide();
+            MainContent.Content = new BookView(role);
         }
+
+        //private void btnManageBooks_Click(object sender, RoutedEventArgs e)
+        //{
+        //  BookView bookView = new BookView(role);
+        //MainContent.Content = bookView;   // hoặc this.Hide();
+        //}
 
         private void TestDatabase()
         {
@@ -90,6 +99,16 @@ namespace LibraryManagement.UI
                 login.Show();
                 this.Close();
             }
+        }
+
+        private void btnManageReaders_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new ReaderView();
+        }
+
+        private void btnManageBorrow_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new BorrowView(role, currentReaderId);
         }
     }
 }

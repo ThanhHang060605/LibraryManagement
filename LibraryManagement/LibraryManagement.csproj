@@ -56,7 +56,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UI\ReaderView.xaml.cs">
+      <DependentUpon>ReaderView.xaml</DependentUpon>
+    </Compile>
     <Page Include="UI\BookView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\BorrowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -90,6 +97,9 @@
     <Compile Include="UI\BookView.xaml.cs">
       <DependentUpon>BookView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\BorrowView.xaml.cs">
+      <DependentUpon>BorrowView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\DashboardAdminView.xaml.cs">
       <DependentUpon>DashboardAdminView.xaml</DependentUpon>
     </Compile>
@@ -100,6 +110,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UI\ReaderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

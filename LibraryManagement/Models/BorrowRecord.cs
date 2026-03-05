@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagement.Models
 {
-    internal class BorrowRecord
+    public class BorrowRecord
     {
         public int BorrowId { get; set; }
         public int ReaderId { get; set; }
@@ -15,5 +15,8 @@ namespace LibraryManagement.Models
         public DateTime DueDate { get; set; }
         public DateTime? ReturnDate { get; set; }
         public string Status { get; set; }
+        public int LateDays { get; set; }
+        public string ReaderName { get; set; }
+        public string BookTitle { get; set; }
     }
 }

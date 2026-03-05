@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using LibraryManagement.DAL;
 using LibraryManagement.Models;
+using System.Linq;
+using System.Windows;
+using System.Collections.Generic;
 
 namespace LibraryManagement.UI
 {
     public partial class LoginWindow : Window
     {
         private List<Account> accounts;
+        private ReaderDAL readerDAL = new ReaderDAL();
 
         public LoginWindow()
         {
@@ -44,9 +36,9 @@ namespace LibraryManagement.UI
 
             if (account != null)
             {
-                MessageBox.Show("Login successful!");
+                int readerId = 1; // user demo luôn có ReaderId = 1
 
-                MainWindow main = new MainWindow(account.Role);
+                MainWindow main = new MainWindow(account.Role, readerId);
                 main.Show();
 
                 this.Close();

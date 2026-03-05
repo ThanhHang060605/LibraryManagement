@@ -56,10 +56,24 @@ namespace LibraryManagement.DAL
         {
             List<BorrowRecord> list = new List<BorrowRecord>();
 
+            string sql = @"
+        SELECT 
+            b.BorrowId,
+            r.FullName AS ReaderName,
+            bk.Title AS BookTitle,
+            b.BorrowDate,
+            b.DueDate,
+            b.Status
+        FROM BorrowRecords b
+JOIN Readers r ON b.ReaderId = r.ReaderId
+JOIN Books bk ON b.BookId = bk.BookId
+    ";
+
             using (SqlConnection conn = DatabaseHelper.GetConnection())
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM BorrowRecords", conn);
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -67,11 +81,10 @@ namespace LibraryManagement.DAL
                     list.Add(new BorrowRecord
                     {
                         BorrowId = (int)reader["BorrowId"],
-                        ReaderId = (int)reader["ReaderId"],
-                        BookId = (int)reader["BookId"],
+                        ReaderName = reader["ReaderName"].ToString(),
+                        BookTitle = reader["BookTitle"].ToString(),
                         BorrowDate = (DateTime)reader["BorrowDate"],
                         DueDate = (DateTime)reader["DueDate"],
-                        ReturnDate = reader["ReturnDate"] as DateTime?,
                         Status = reader["Status"].ToString()
                     });
                 }
