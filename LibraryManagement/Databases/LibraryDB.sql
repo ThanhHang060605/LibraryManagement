@@ -18,7 +18,8 @@ CREATE TABLE Readers (
     ReaderId INT IDENTITY(1,1) PRIMARY KEY,
     FullName NVARCHAR(150) NOT NULL,
     Phone NVARCHAR(20),
-    Email NVARCHAR(150)
+    Email NVARCHAR(150),
+    Address NVARCHAR(200)
 );
 
 CREATE TABLE BorrowRecords (

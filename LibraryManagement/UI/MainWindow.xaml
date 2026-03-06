@@ -43,7 +43,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- ===== SIDEBAR ===== -->
         <Border Grid.Column="0">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -73,32 +72,36 @@
                            FontWeight="Bold"
                            Margin="20,0,0,10"/>
 
-                <Button Content="📚   Quản lý Sách"
-                        Style="{StaticResource MenuButtonStyle}"
+                <Button x:Name="btnManageBooks" 
+                        Content="📚    Quản lý Sách" 
+                        Style="{StaticResource MenuButtonStyle}" 
                         Click="btnManageBooks_Click"/>
 
-                <Button x:Name="btnManageReaders" Content="👥   Quản lý Độc giả"
-                        Style="{StaticResource MenuButtonStyle}"
+                <Button x:Name="btnManageReaders" 
+                        Content="👥    Quản lý Độc giả" 
+                        Style="{StaticResource MenuButtonStyle}" 
                         Click="btnManageReaders_Click"/>
 
-                <Button x:Name="btnBorrowBooks" Content="🔄   Quản lý Mượn / Trả"
+                <Button x:Name="btnBorrowBooks" 
+                        Content="🔄    Quản lý Mượn / Trả"
                         Style="{StaticResource MenuButtonStyle}"
                         Click="btnManageBorrow_Click"/>
 
-                <Button x:Name="btnDashboard" Content="📊   Dashboard Thống kê"
+                <Button x:Name="btnDashboard" 
+                        Content="📊    Dashboard Thống kê"
                         Style="{StaticResource MenuButtonStyle}"
                         Click="btnDashboard_Click"/>
 
                 <Separator Background="#40FFFFFF"
                            Margin="20,15,20,15"/>
 
-                <Button Content="🚪   Đăng xuất"
+                <Button x:Name="btnLogout" 
+                        Content="🚪    Đăng xuất"
                         Style="{StaticResource MenuButtonStyle}"
                         Click="btnLogout_Click"/>
             </StackPanel>
         </Border>
 
-        <!-- ===== MAIN CONTENT ===== -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
