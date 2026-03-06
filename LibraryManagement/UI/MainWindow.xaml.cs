@@ -1,15 +1,14 @@
 ﻿using LibraryManagement.DAL;
 using System;
 using System.Windows;
-// CHỖ NÀY QUAN TRỌNG: Đảm bảo có dòng này để chương trình hiểu DashboardAdminView là gì
 using LibraryManagement.UI;
+
 namespace LibraryManagement.UI
 {
     public partial class MainWindow : Window
     {
         private string role;
         private int currentReaderId;
-
 
         public MainWindow(string role, int readerId)
         {
@@ -19,31 +18,25 @@ namespace LibraryManagement.UI
 
             SetupRole();
 
+            // Mặc định hiển thị danh sách sách khi vừa vào
             MainContent.Content = new BookView(role);
-
-            // TestDatabase();
         }
 
         private void SetupRole()
         {
             txtRole.Text = "Logged in as: " + role;
 
+            // Phân quyền: Nếu là User thì ẩn các chức năng quản lý của Admin
             if (role == "User")
             {
-                //btnManageBooks.Visibility = Visibility.Collapsed;
-                btnManageReaders.Visibility = Visibility.Collapsed; // Ẩn luôn quản lý độc giả nếu là User
+                btnManageReaders.Visibility = Visibility.Collapsed;
                 btnDashboard.Visibility = Visibility.Collapsed;
             }
         }
 
-        // Đây là hàm xử lý sự kiện Click đã khai báo trong XAML
         private void btnDashboard_Click(object sender, RoutedEventArgs e)
         {
-            // Nếu dòng dưới vẫn đỏ, hãy nhấn Ctrl + Shift + B để Build lại Project
-            DashboardAdminView dashboard = new DashboardAdminView();
-
-            // MainContent phải khớp với x:Name trong XAML bạn vừa gửi
-            MainContent.Content = dashboard;
+            MainContent.Content = new DashboardAdminView();
         }
 
         private void btnManageBooks_Click(object sender, RoutedEventArgs e)
@@ -51,45 +44,17 @@ namespace LibraryManagement.UI
             MainContent.Content = new BookView(role);
         }
 
-        //private void btnManageBooks_Click(object sender, RoutedEventArgs e)
-        //{
-        //  BookView bookView = new BookView(role);
-        //MainContent.Content = bookView;   // hoặc this.Hide();
-        //}
-
-        private void TestDatabase()
+        private void btnManageReaders_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                BookDAL dal = new BookDAL();
-
-                // INSERT
-                dal.Insert(new Models.Book
-                {
-                    Title = "Test Book",
-                    Author = "Admin",
-                    Category = "Test",
-                    Quantity = 5,
-                    AvailableQuantity = 5
-                });
-
-                // SELECT
-                var books = dal.GetAll();
-
-                string result = "";
-                foreach (var b in books)
-                {
-                    result += b.BookId + " - " + b.Title + "\n";
-                }
-
-                MessageBox.Show(result);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
-            }
+            MainContent.Content = new ReaderView();
         }
-        //Nút đăng xuất
+
+        private void btnManageBorrow_Click(object sender, RoutedEventArgs e)
+        {
+            // Truyền role và ID độc giả hiện tại vào màn hình Mượn/Trả
+            MainContent.Content = new BorrowView(role, currentReaderId);
+        }
+
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Xác nhận", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -101,14 +66,33 @@ namespace LibraryManagement.UI
             }
         }
 
-        private void btnManageReaders_Click(object sender, RoutedEventArgs e)
+        // Phương thức bổ trợ để test Database nếu cần (đã comment)
+        private void TestDatabase()
         {
-            MainContent.Content = new ReaderView();
-        }
+            try
+            {
+                BookDAL dal = new BookDAL();
+                dal.Insert(new Models.Book
+                {
+                    Title = "Test Book",
+                    Author = "Admin",
+                    Category = "Test",
+                    Quantity = 5,
+                    AvailableQuantity = 5
+                });
 
-        private void btnManageBorrow_Click(object sender, RoutedEventArgs e)
-        {
-            MainContent.Content = new BorrowView(role, currentReaderId);
+                var books = dal.GetAll();
+                string result = "";
+                foreach (var b in books)
+                {
+                    result += b.BookId + " - " + b.Title + "\n";
+                }
+                MessageBox.Show(result);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
         }
     }
 }

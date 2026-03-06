@@ -37,7 +37,9 @@ namespace LibraryManagement.UI
 
         void ApplyPermission()
         {
-            if (role == "User")
+            bool isUser = string.Equals(role, "User", StringComparison.OrdinalIgnoreCase);
+
+            if (isUser)
             {
                 btnAdd.Visibility = Visibility.Collapsed;
                 btnUpdate.Visibility = Visibility.Collapsed;
@@ -48,7 +50,13 @@ namespace LibraryManagement.UI
                 txtCategory.IsReadOnly = true;
                 txtQuantity.IsReadOnly = true;
 
-                txtTitle.Background = Brushes.LightGray;
+                Brush readOnlyBackground = new SolidColorBrush(Color.FromRgb(241, 245, 249));
+                txtTitle.Background = readOnlyBackground;
+                txtAuthor.Background = readOnlyBackground;
+                txtCategory.Background = readOnlyBackground;
+                txtQuantity.Background = readOnlyBackground;
+
+                dgBooks.IsReadOnly = true;
             }
         }
 
@@ -186,12 +194,23 @@ namespace LibraryManagement.UI
             dgBooks.ItemsSource = bus.Search(keyword);
         }
 
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            txtSearch.Clear();
+            ClearForm();
+            LoadData();
+            dgBooks.SelectedItem = null;
+
+            MessageBox.Show("Đã tải lại dữ liệu!");
+        }
         private void dgBooks_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (dgBooks.SelectedItem == null) return;
+            if (dgBooks.SelectedItem == null || !(dgBooks.SelectedItem is Book))
+            {
+                return;
+            }
 
             Book book = (Book)dgBooks.SelectedItem;
-
             txtTitle.Text = book.Title;
             txtAuthor.Text = book.Author;
             txtCategory.Text = book.Category;
