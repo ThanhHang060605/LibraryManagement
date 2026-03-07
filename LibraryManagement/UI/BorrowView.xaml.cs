@@ -1,10 +1,11 @@
-﻿using System;
+﻿using LibraryManagement.DAL;
+using LibraryManagement.Models;
+using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using LibraryManagement.DAL;
-using LibraryManagement.Models;
 
 namespace LibraryManagement.UI
 {
@@ -44,7 +45,7 @@ namespace LibraryManagement.UI
         {
             // Load Reader (Admin dùng)
             cbReader.ItemsSource = readerDAL.GetAll();
-            cbReader.DisplayMemberPath = "ReaderName";
+            cbReader.DisplayMemberPath = "FullName";
             cbReader.SelectedValuePath = "ReaderId";
 
             // Chỉ hiển thị sách còn số lượng
@@ -58,7 +59,55 @@ namespace LibraryManagement.UI
             dgBorrow.ItemsSource = borrowDAL.GetAllBorrow();
         }
 
-        // ================== MƯỢN ==================
+        //================== MƯỢN ==================
+        //private void Borrow_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (cbBook.SelectedValue == null)
+        //        {
+        //            MessageBox.Show("Vui lòng chọn sách!");
+        //            return;
+        //        }
+
+        //        if (dpDueDate.SelectedDate == null)
+        //        {
+        //            MessageBox.Show("Vui lòng chọn hạn trả!");
+        //            return;
+        //        }
+
+        //        int readerId;
+
+        //        if (role == "User")
+        //        {
+        //            readerId = currentReaderId;
+        //        }
+        //        else
+        //        {
+        //            if (cbReader.SelectedValue == null)
+        //            {
+        //                MessageBox.Show("Vui lòng chọn người đọc!");
+        //                return;
+        //            }
+
+        //            readerId = (int)cbReader.SelectedValue;
+        //        }
+
+        //        int bookId = (int)cbBook.SelectedValue;
+        //        DateTime dueDate = dpDueDate.SelectedDate.Value;
+
+        //        borrowDAL.InsertBorrow(readerId, bookId, dueDate);
+
+        //        MessageBox.Show("Mượn sách thành công!");
+
+        //        ResetForm();
+        //        LoadData();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
         private void Borrow_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -142,10 +191,12 @@ namespace LibraryManagement.UI
         // ================== RESET ==================
         private void ResetForm()
         {
+            //txtReader.Text = "";
             cbReader.SelectedIndex = -1;
             cbBook.SelectedIndex = -1;
             dpDueDate.SelectedDate = null;
         }
+
 
         // ================== SEARCH ==================
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -197,6 +248,11 @@ namespace LibraryManagement.UI
                 txtSearch.Text = "Tìm theo tên người đọc hoặc sách...";
                 txtSearch.Foreground = Brushes.Gray;
             }
+        }
+
+        private void dgBorrow_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

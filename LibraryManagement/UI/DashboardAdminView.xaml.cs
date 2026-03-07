@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LibraryManagement.DAL;
 
 namespace LibraryManagement.UI
 {
@@ -20,9 +21,19 @@ namespace LibraryManagement.UI
     /// </summary>
     public partial class DashboardAdminView : UserControl
     {
+        ThongKeDAL tk = new ThongKeDAL();
         public DashboardAdminView()
         {
             InitializeComponent();
+            LoadDashboard();
+        }
+        private void LoadDashboard()
+        {
+            txtTongSoSach.Text = tk.GetTongSoSach().ToString();
+            txtTongNguoiMuon.Text = tk.GetTongNguoiMuon().ToString();
+            txtSachMuonNhieu.Text = tk.GetSachMuonNhieuNhat();
+            txtNguoiMuonNhieu.Text = tk.GetNguoiMuonNhieuNhat();
+            dgSachQuaHan.ItemsSource = tk.GetDanhSachQuaHan().DefaultView;
         }
     }
 }
